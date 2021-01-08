@@ -1,0 +1,202 @@
+
+<div class="forms-container">
+  <form id="login" class="form-signin" (ngSubmit)="login()" *ngIf="showLogin else registerForm" >
+    <div class="form-label-group field">
+      <input
+        id="loginUsername"
+        type="text"
+        name="username1"
+        [(ngModel)]="username"
+        class="form-control"
+        placeholder="Username"
+        required
+        minlength="4"
+        autofocus
+        #usernameInput="ngModel"
+      />
+      <label for="loginUsername">Username</label>
+      <div class="error-container text-danger" *ngIf="!usernameInput.valid && (usernameInput.dirty || usernameInput.touched)">
+        <p *ngIf="usernameInput.errors?.required">
+          Username is required.
+        </p>
+        <p *ngIf="usernameInput.errors?.minlength">
+          Username must be at least 4 characters long.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-label-group field">
+      <input
+        id="loginPassword"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        class="form-control"
+        placeholder="Password"
+        required
+        minlength="6"
+        #passwordInput="ngModel"
+      />
+      <label for="loginPassword">Password</label>
+      <div class="error-container text-danger" *ngIf="!passwordInput.valid && (passwordInput.dirty || passwordInput.touched)">
+        <p *ngIf="passwordInput.errors?.required">
+          Password is required.
+        </p>
+        <p *ngIf="passwordInput.errors?.minlength">
+          Password must be at least 6 characters long.
+        </p>
+      </div>
+    </div>
+
+    <div class="checkbox mb-3 text-danger" *ngIf="loginError">
+      Login failed. Please try again.
+    </div>
+    <button
+      type="submit"
+      class="btn btn-full btn-red"
+      [disabled]="busy || !usernameInput.valid || !passwordInput.valid"
+    >
+      Login
+    </button>
+    <p (click)="showLogin=false" style="text-align: center">Register</p>
+
+  </form>
+
+  <ng-template #registerForm>
+    <form id="register" class="form-signin" (ngSubmit)="register()">
+      <div class="form-label-group field">
+        <input
+          id="registerUsername"
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          class="form-control"
+          placeholder="Username"
+          required
+          minlength="4"
+          autofocus
+          #usernameInput="ngModel"
+        />
+        <label for="registerUsername">Username</label>
+        <div class="error-container text-danger" *ngIf="!usernameInput.valid && (usernameInput.dirty || usernameInput.touched)">
+          <p *ngIf="usernameInput.errors?.required">
+            Name is required.
+          </p>
+          <p *ngIf="usernameInput.errors?.minlength">
+            Name must be at least 4 characters long.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-label-group field">
+        <input
+          id="registerEmail"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          minlength="6"
+          pattern=".+@.+\..+"
+          #emailInput="ngModel"
+        />
+        <label for="registerEmail">Email</label>
+        <div class="error-container text-danger" *ngIf="!emailInput.valid && (emailInput.dirty || emailInput.touched)">
+          <p *ngIf="emailInput.errors?.required">
+            Email is required.
+          </p>
+          <p *ngIf="emailInput.errors?.minlength">
+            Email must be at least 6 characters long.
+          </p>
+          <p *ngIf="emailInput.errors?.pattern">
+            It is not an email.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-label-group field">
+        <input
+          id="registerPassword"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          class="form-control"
+          placeholder="Password"
+          required
+          minlength="6"
+          #passwordInput="ngModel"
+        />
+        <label for="registerPassword">Password</label>
+        <div class="error-container text-danger" *ngIf="!passwordInput.valid && (passwordInput.dirty || passwordInput.touched)">
+          <p *ngIf="passwordInput.errors?.required">
+            Password is required.
+          </p>
+          <p *ngIf="passwordInput.errors?.minlength">
+            Password must be at least 6 characters long.
+          </p>
+        </div>
+      </div>
+
+      <div class="checkbox mb-3 text-danger" *ngIf="loginError">
+        Register failed. Please try again.
+      </div>
+      <button
+        type="submit"
+        class="btn btn-full btn-red"
+        [disabled]="busy || !usernameInput.valid || !emailInput.valid || !passwordInput.valid"
+      >
+        Register
+      </button>
+      <p style="text-align: center" (click)="showLogin=true">Login</p>
+    </form>
+  </ng-template>
+</div>
+
+<!--<form class="form-signin" (ngSubmit)="login()">-->
+<!--  <div class="form-label-group">-->
+<!--    <input-->
+<!--      type="text"-->
+<!--      id="userName"-->
+<!--      name="username"-->
+<!--      [(ngModel)]="username"-->
+<!--      class="form-control"-->
+<!--      placeholder="Username"-->
+<!--      required-->
+<!--      autofocus-->
+<!--    />-->
+<!--    <label for="userName">Username</label>-->
+<!--  </div>-->
+<!--  <div class="form-label-group">-->
+<!--    <input-->
+<!--      type="password"-->
+<!--      id="inputPassword"-->
+<!--      name="password"-->
+<!--      [(ngModel)]="password"-->
+<!--      class="form-control"-->
+<!--      placeholder="Password"-->
+<!--      required-->
+<!--    />-->
+<!--    <label for="inputPassword">Password</label>-->
+<!--  </div>-->
+
+<!--  <div class="checkbox mb-3 text-danger" *ngIf="loginError">-->
+<!--    Login failed. Please try again.-->
+<!--  </div>-->
+<!--  <button-->
+<!--    type="submit"-->
+<!--    class="btn btn-lg btn-primary btn-block"-->
+<!--    [disabled]="busy"-->
+<!--  >-->
+<!--    Sign in-->
+<!--  </button>-->
+
+<!--  <div class="small text-secondary mt-3 d-none d-sm-flex">-->
+<!--    <strong>Example logins:</strong>-->
+<!--    <ul>-->
+<!--      <li>admin: securePassword</li>-->
+<!--      <li>test1: password1</li>-->
+<!--      <li>test2: password2</li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</form>-->

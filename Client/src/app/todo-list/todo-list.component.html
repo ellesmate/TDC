@@ -1,0 +1,44 @@
+<div class="todo-list">
+  <section>
+    <div class="todo-list-header">
+      <h2>{{ day.date.format('dddd') }}</h2>
+      <p>{{ day.date.format('MMMM DD, yyyy') }}</p>
+    </div>
+  </section>
+  <ul id="drag-drop-list-{{day.date.format('MM/DD/yyyy')}}"
+      cdkDropList class="todo-list-body"
+      [cdkDropListData]="day"
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListConnectedTo]="listIds"
+  >
+    <li class="todo-list-item" *ngFor="let todo of day.todos" cdkDrag>
+      <div class="todo-list-content">
+        <div
+          *ngIf="!todo.editing; else editingTodo" (dblclick)="editTodo(todo)" (click)="completeTodo(todo)"
+          [ngClass]="{ 'completed': todo.completed }"
+        >{{ todo.content }}</div>
+        <ng-template #editingTodo>
+          <input type="text" tabindex="-1" [(ngModel)]="todo.content"
+                 (blur)="doneEdit(todo)" (keyup.enter)="blurInput($event)" autofocus>
+        </ng-template>
+      </div>
+      <div class="todo-list-buttons" *ngIf="!todo.editing">
+        <svg class="control-icon" viewBox="0 0 16 16" width="16px" height="16px" *ngIf="!todo.completed; else deleteTemplate" (click)="editTodo(todo)">
+          <path d="M2,14,3.5,9.5l3,3ZM10,3l3,3,1.5-1.5-3-3ZM4.5,8.5l3,3L12,7,9,4Z"></path>
+        </svg>
+        <ng-template #deleteTemplate>
+          <svg class="control-icon" viewBox="0 0 16 16" width="16px" height="16px" (click)="deleteTodo(todo.id)">
+            <polygon points="13.71 3.71 12.29 2.29 8 6.59 3.71 2.29 2.29 3.71 6.59 8 2.29 12.29 3.71 13.71 8 9.41 12.29 13.71 13.71 12.29 9.41 8 13.71 3.71"></polygon>
+          </svg>
+        </ng-template>
+      </div>
+    </li>
+    <li class="todo-list-item">
+      <div>
+        <label class="todo-list-content">
+          <input type="text" tabindex="0" [(ngModel)]="todoTitle" (blur)="createTodo()" (keyup.enter)="blurInput($event)">
+        </label>
+      </div>
+    </li>
+  </ul>
+</div>

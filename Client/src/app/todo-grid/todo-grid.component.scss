@@ -1,0 +1,45 @@
+.todos-collection {
+  z-index: 1;
+  position: relative;
+  display: grid;
+  grid-auto-columns: calc(100% / 5);
+  grid-template-rows: 100%;
+  list-style-type: none;
+  transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+
+  app-todo-list {
+    display: block;
+    grid-row: 1/-1;
+
+    //&:nth-child(0),
+    //&:nth-child(4) {
+    //  display: none;
+    //}
+  }
+}
+
+.grid-wrapper {
+  overflow: hidden;
+}
+
+.todo-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+
+  svg {
+    color: #f41d12;
+    fill: currentColor;
+    transition: color .3s ease-in-out;
+    margin-bottom: 0.5rem;
+
+    &:not(:first-child) {
+      color: #c9c9c9;
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

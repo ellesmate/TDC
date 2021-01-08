@@ -1,0 +1,28 @@
+<div class="container" style="display: flex;">
+  <nav class="todo-nav">
+    <svg viewBox="0 0 16 16" width="48" height="48" (click)="scrollLeft(1)">
+      <polygon points="3.5 8 8.5 3 12.5 3 7.5 8 12.5 13 8.5 13 3.5 8"></polygon>
+    </svg>
+    <svg viewBox="0 0 16 16" width="16" height="16" (click)="scrollLeft(7)">
+      <path d="M0,8,5,3H9L4,8l5,5H5Zm12,5h4L11,8l5-5H12L7,8Z"></path>
+    </svg>
+    <svg viewBox="0 0 16 16" width="16" height="16" (click)="scrollHome()">
+      <polygon points="6 14 3 14 3 8 1 8 8 1 15 8 13 8 13 14 10 14 10 9 6 9 6 14"></polygon>
+    </svg>
+  </nav>
+
+  <div class="grid-wrapper">
+    <ol class="todos-collection" [style.transform]="'translateX(' + n * -20 + '%)'">
+      <app-todo-list id="todo-list-{{day.date.format('MM/DD/yyyy')}}" [day]="day" [listIds]="listIds" *ngFor="let day of todoGrid; index as i"></app-todo-list>
+    </ol>
+  </div>
+
+  <nav class="todo-nav">
+    <svg viewBox="0 0 16 16" width="48" height="48" (click)="scrollRight(1)">
+      <polygon points="12.5 8 7.5 13 3.5 13 8.5 8 3.5 3 7.5 3 12.5 8"></polygon>
+    </svg>
+    <svg viewBox="0 0 16 16" width="16" height="16" (click)="scrollRight(7)">
+      <path d="M16,8l-5,5H7l5-5L7,3h4ZM4,3H0L5,8,0,13H4L9,8Z"></path>
+    </svg>
+  </nav>
+</div>

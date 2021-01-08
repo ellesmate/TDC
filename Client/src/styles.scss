@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --light-background-color: #eee;
+  --primary-color: #dc3545;
+  --dark-color: #333333;
+  --light-color: #f4f4f4;
+  --list-border-color: rgba(0, 0, 0, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+  //font-family: 'Roboto', sans-serif;
+  //font-family: alternate-gothic-no-1-d,"Roboto Condensed","Helvetica Neue",Helvetica,-apple-system,system-ui,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,-apple-system,system-ui,sans-serif;
+  font-size: 1.125em;
+  line-height: 1.5;
+  background: var(--light-backgroud-color);
+}
+
+.container {
+  margin: auto;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: var(--todo-text-color);
+  display: block;
+  font-family: inherit;
+  font-size: 1.27em;
+  height: 100%;
+  outline: 0;
+  padding: 0;
+  width: 100%;
+}
