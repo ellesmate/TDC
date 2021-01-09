@@ -34,8 +34,9 @@ namespace TDC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine(Configuration["ConnectionStrings:TodoDatabase"]);
             services.AddDbContext<TodoContext>(options =>
-                options.UseInMemoryDatabase("todo_db"));
+                options.UseNpgsql(Configuration["ConnectionStrings:TodoDatabase"]));
 
             services.AddTransient<IDayService, DayService>();
             
