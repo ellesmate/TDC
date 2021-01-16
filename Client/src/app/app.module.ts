@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AutofocusFixModule } from 'ngx-autofocus-fix';
+import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     HttpClientModule,
     DragDropModule,
+    SwiperModule,
     AutofocusFixModule.forRoot()
   ],
   providers: [],

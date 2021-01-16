@@ -43,3 +43,19 @@
     }
   }
 }
+
+@media (max-width: 420px) {
+  .todo-nav {
+    position: absolute;
+    top: 0.1rem;
+
+    &.nav-left {
+      left: 0;
+    }
+
+    &.nav-right {
+      right: 0;
+      left: auto;
+    }
+  }
+}

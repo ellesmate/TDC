@@ -1,5 +1,5 @@
-<div class="container" style="display: flex;">
-  <nav class="todo-nav">
+<div class="container" style="display: flex; position: relative;">
+  <nav class="todo-nav nav-left">
     <svg viewBox="0 0 16 16" width="48" height="48" (click)="scrollLeft(1)">
       <polygon points="3.5 8 8.5 3 12.5 3 7.5 8 12.5 13 8.5 13 3.5 8"></polygon>
     </svg>
@@ -11,13 +11,18 @@
     </svg>
   </nav>
 
-  <div class="grid-wrapper">
-    <ol class="todos-collection" [style.transform]="'translateX(' + n * -20 + '%)'">
-      <app-todo-list id="todo-list-{{day.date.format('MM/DD/yyyy')}}" [day]="day" [listIds]="listIds" *ngFor="let day of todoGrid; index as i"></app-todo-list>
-    </ol>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <app-todo-list class="swiper-slide"
+                     id="todo-list-{{day.date.format('MM/DD/yyyy')}}"
+                     [day]="day"
+                     [listIds]="listIds"
+                     *ngFor="let day of todoGrid; index as i"
+      ></app-todo-list>
+    </div>
   </div>
 
-  <nav class="todo-nav">
+  <nav class="todo-nav nav-right">
     <svg viewBox="0 0 16 16" width="48" height="48" (click)="scrollRight(1)">
       <polygon points="12.5 8 7.5 13 3.5 13 8.5 8 3.5 3 7.5 3 12.5 8"></polygon>
     </svg>

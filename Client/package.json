@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +23,7 @@
     "moment": "^2.29.1",
     "ngx-autofocus-fix": "^1.0.4",
     "rxjs": "~6.6.0",
+    "swiper": "^6.4.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
