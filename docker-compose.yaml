@@ -1,27 +1,29 @@
 version: "3"
+
 services: 
-    nginx:
-        build: 
-            context: ./Nginx
-            dockerfile: Dockerfile
-        ports: 
-            - 80:80
-        restart: always
-    client:
-        build:
-            context: ./Client
-            dockerfile: Dockerfile
-        ports: 
-            - 5000:80
-    dncapi:
-        build: 
-            context: ./API
-            dockerfile: Dockerfile
-        environment:
-            - jwtTokenConfig__Secret=
-            - jwtTokenConfig__Issuer=
-            - jwtTokenConfig__Audience=
-            - jwtTokenConfig__AccessTokenExpiration=20
-            - jwtTokenConfig__RefreshTokenExpiration=360
-        ports: 
-            - 3000:80
+  nginx:
+    build: 
+      context: ./Nginx
+      dockerfile: Dockerfile
+    ports: 
+      - 80:80
+    restart: always
+  client:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    ports: 
+      - 5000:80
+  dncapi:
+    build: 
+      context: ./API
+      dockerfile: Dockerfile
+    environment:
+      - jwtTokenConfig__Secret=
+      - jwtTokenConfig__Issuer=
+      - jwtTokenConfig__Audience=
+      - jwtTokenConfig__AccessTokenExpiration=
+      - jwtTokenConfig__RefreshTokenExpiration=
+      - ConnectionStrings__TodoDatabase=Server=<address>;Port=5432;Database=todo_db;User Id=<username>;Password=<password>;
+    ports: 
+      - 3000:80
